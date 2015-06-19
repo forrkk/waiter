@@ -14,7 +14,7 @@ script:
   - CGO_ENABLED=0 go build --ldflags '-extldflags "-static" -s -w'
 after_script:
   - ls -lah
-  - goupx -s waiter
+  - goupx --strip-binary waiter
   - ls -lah
 env:
   global:
