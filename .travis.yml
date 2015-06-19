@@ -1,4 +1,4 @@
-sudo: false
+#sudo: false
 language: go
 go:
 - tip
@@ -6,10 +6,13 @@ go_build: --ldflags '-extldflags "-static" -s -w'
 branches:
   only:
   - master
-addons:
-  apt:
-    packages:
-      - upx-ucl
+#addons:
+#  apt:
+#    packages:
+#      - upx-ucl
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y upx-ucl
 before_script:
   - go get github.com/pwaller/goupx
 script:
