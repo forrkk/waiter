@@ -6,7 +6,7 @@ go_build: --ldflags '-extldflags "-static" -s -w'
 branches:
   only:
   - master
-before_deploy:
+after_script:
   - ls -lah
 env:
   global:
