@@ -3,8 +3,8 @@ go:
 - tip
 go_build: --ldflags '-extldflags "-static" -s -w'
 branches:
-  only:
-  - master
+  except:
+    - /^*-v[0-9]/
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -y upx-ucl
