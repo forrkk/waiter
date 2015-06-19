@@ -6,6 +6,10 @@ go_build: --ldflags '-extldflags "-static" -s -w'
 branches:
   only:
   - master
+addons:
+  apt:
+    packages:
+      - upx-ucl
 before_script:
   - go get github.com/pwaller/goupx
 script:
