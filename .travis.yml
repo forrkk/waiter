@@ -6,6 +6,8 @@ go_build: --ldflags '-extldflags "-static" -s -w'
 branches:
   only:
   - master
+before_deploy:
+  - ls -lah
 env:
   global:
     secure: I2giYwvSUPJgtKbTLmpv8IYulHBOinyAVjbATILw+WaGk6yKbpWR1kgxyyqDjgGp8FsvV3np0N6m40E7lTWSjFrQwtgK6gwJH7TY1hbINaQzAYqfIryS7BjVXdQWzwQYYXHVY28HuXBoP2GoBGeqZWmV8szvdsXcUvsVzpfk8e70Hcnj/rZ8v+ZMIa6gCLZLfTI8HSvi5+mzvX9lV55Z4pvza81KI9zFkmEb/h55K9/k56xtENtba1XhlpKqhiIShfOQLKKvCEpOn4cfPeE0dHhks+Wi6BSE+zCiAKHFyHMjsDGqrtSbLpHmuTm56oBNHtaB3WWRAF5TGwCtIkMf17uU49c2KNjW5SpY6VFgcMlJMGatRPMVBV54nWidcRVZ+BYttEYlKj2SN8/mQcAphWREoAacTNIKUZPNBDPr2vhkCOQXyL89ht9H14Iwa4TTZKHO4/J88Bpt59p29W0kh+mHgmTwzDCoB17v3hl0xoDf7w8LOQ6FQ6Wz5m5kbTo5f86xr6KlreyE96z6WFI6mcnTWvfeOxXJiODQkMrrdDGJFdxCcdwVhxiHuwCPpDMhMOhvvX6f4cDlij8GoZy7jJsKNhWjP/jylKT+IImx+9YSNUruvaPYZT9cdNgBy9c05QbijzDldyEiMf86DcRcZKJmmciQydYC6TaLHgQrUjc=
