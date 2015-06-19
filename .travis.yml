@@ -6,16 +6,23 @@ branches:
   only:
   - master
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -y upx-ucl
+- sudo apt-get update -qq
+- sudo apt-get install -y upx-ucl
 before_script:
-  - go get github.com/pwaller/goupx
+- go get github.com/pwaller/goupx
 script:
-  - CGO_ENABLED=0 go build --ldflags '-extldflags "-static" -s -w'
+- CGO_ENABLED=0 go build --ldflags '-extldflags "-static" -s -w'
 after_script:
-  - ls -lah
-  - goupx --strip-binary waiter
-  - ls -lah
+- goupx --strip-binary waiter
+deploy:
+  skip_cleanup: true
+  provider: releases
+  file:
+    - "waiter"
+  apikey:
+    secure: Bz6GPpSR53srPAzFjAtVujMNg8LD8YcIYwvusm9tMkYAERaH8F40spU3adUmR12K3/Nts3RQelttmdQeIIwKqLMqVA4O0omrP8tvIrf46SGC5iWS5STkyyu4CuM/laIEYEDgfIKXR/YFZuf7ibYpRFjvDUYR9nJ7gMaFkezx4kMJ5C3VXhqJSF9FqpnLIskpjdbBuqzRZAFPLkCZVVPSlPG8YnqxTyv47PGBV2I8q9D4q1G/agky+Si6XffHKeRkQQIab3QT1xGkumdi28Q7xLulTNX7bmr/HgT9RC4HAfIgeZoNkH1zogQGQwyRt3bo0jP9lvZr7IpiN7lUOshWMfJp4PxxSMRGj2TXDSReiLyUwgA5aIhBabHd82xLT+3yCQMfRmWBVmhZqGRe8vC+BjDCeZAOy4E5sMmEcDlwWyMtubcZ1GVpVSIYBITDX+QpLKCArivJQlqrsadgsT7vZibZWHFfxpa299F9KuJ212hbLOtckcPgqVEolQfG7Tlj83aHPefYs7WxK2I59PjbIKkNpd7ynjo+Vf1u/xS6gxSdtzGhz1ob6mLvE6YaePEJFQXeA1y/nerKA1qVz7GylYzYFuUkP6SyRVdMTZ0xk9CORdMXDlOBTT+NadHxwzYrBVtsMpufsdJ31ZlcKBVPR0CMVhmihRH8M/EHDXoaOlg=
+  on:
+    tags: false
 env:
   global:
     secure: I2giYwvSUPJgtKbTLmpv8IYulHBOinyAVjbATILw+WaGk6yKbpWR1kgxyyqDjgGp8FsvV3np0N6m40E7lTWSjFrQwtgK6gwJH7TY1hbINaQzAYqfIryS7BjVXdQWzwQYYXHVY28HuXBoP2GoBGeqZWmV8szvdsXcUvsVzpfk8e70Hcnj/rZ8v+ZMIa6gCLZLfTI8HSvi5+mzvX9lV55Z4pvza81KI9zFkmEb/h55K9/k56xtENtba1XhlpKqhiIShfOQLKKvCEpOn4cfPeE0dHhks+Wi6BSE+zCiAKHFyHMjsDGqrtSbLpHmuTm56oBNHtaB3WWRAF5TGwCtIkMf17uU49c2KNjW5SpY6VFgcMlJMGatRPMVBV54nWidcRVZ+BYttEYlKj2SN8/mQcAphWREoAacTNIKUZPNBDPr2vhkCOQXyL89ht9H14Iwa4TTZKHO4/J88Bpt59p29W0kh+mHgmTwzDCoB17v3hl0xoDf7w8LOQ6FQ6Wz5m5kbTo5f86xr6KlreyE96z6WFI6mcnTWvfeOxXJiODQkMrrdDGJFdxCcdwVhxiHuwCPpDMhMOhvvX6f4cDlij8GoZy7jJsKNhWjP/jylKT+IImx+9YSNUruvaPYZT9cdNgBy9c05QbijzDldyEiMf86DcRcZKJmmciQydYC6TaLHgQrUjc=
