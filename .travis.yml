@@ -6,6 +6,8 @@ go_build: --ldflags '-extldflags "-static" -s -w'
 branches:
   only:
   - master
+script:
+  - CGO_ENABLED=0 go build --ldflags '-extldflags "-static" -s -w'
 after_script:
   - ls -lah
 env:
